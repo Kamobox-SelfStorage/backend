@@ -1,9 +1,8 @@
-
 from fastapi import FastAPI
+
+from app.routers import health, units
 
 app = FastAPI(title="KamoBox API")
 
-
-@app.get("/health")
-def health_check():
-    return {"status": "ok"}
+app.include_router(health.router)
+app.include_router(units.router)
