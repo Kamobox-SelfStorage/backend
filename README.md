@@ -1,72 +1,55 @@
-# \# KamoBox Backend
+## KamoBox Backend
 
-# 
+ 
 
-# Backend API for the KamoBox self-storage platform.
+Backend API for the KamoBox self-storage platform.
 
-# 
 
-# \## Tech Stack
 
-# 
+## Tech Stack
 
-# \- Python 3.14
+- Python 3.14
+- FastAPI
+- Uvicorn
+- PostgreSQL (planned)
 
-# \- FastAPI
 
-# \- Uvicorn
 
-# \- PostgreSQL (planned)
+## Development Setup
 
-# 
+### 1. Create a virtual environment
 
-# \## Development Setup
+```powershell
 
-# 
+py -3.14 -m venv .venv
 
-# \### 1. Create a virtual environment
+```
 
-# 
+### 2. Install dependencies
 
-# ```powershell
+```powershell
 
-# py -3.14 -m venv .venv
+ .\\.venv\\Scripts\\python.exe -m pip install -r requirements.txt
 
-# ```
+```
 
-# 
 
-# \### 2. Install dependencies
 
-# 
+### 3. Run the development server
 
-# ```powershell
+```powershell
 
-# .\\.venv\\Scripts\\python.exe -m pip install -r requirements.txt
+.\\.venv\\Scripts\\python.exe -m uvicorn app.main:app --reload
 
-# ```
+```
 
-# 
 
-# \### 3. Run the development server
 
-# 
+## API Endpoints
 
-# ```powershell
+- `GET /health` — checks whether the API is running.
 
-# .\\.venv\\Scripts\\python.exe -m uvicorn app.main:app --reload
-
-# ```
-
-# 
-
-# \## API Endpoints
-
-# 
-
-# \- `GET /health` — checks whether the API is running.
-
-# \- `/docs` — interactive API documentation.
+- `/docs` — interactive API documentation.
 
 
 
