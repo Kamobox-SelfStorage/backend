@@ -11,7 +11,7 @@ Backend API for the KamoBox self-storage platform.
 - Python 3.14
 - FastAPI
 - Uvicorn
-- PostgreSQL (planned)
+- PostgreSQL
 
 
 
