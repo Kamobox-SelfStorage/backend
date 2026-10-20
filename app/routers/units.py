@@ -16,6 +16,7 @@ class UnitResponse(BaseModel):
     area_m2: Decimal
     status: str
     container_id: int
+    monthly_price: Decimal
 
 
 @router.get("", response_model=list[UnitResponse])
@@ -24,7 +25,13 @@ def list_units():
         with get_db_connection() as connection:
             rows = connection.execute(
                 """
-                SELECT id, unit_number, area_m2, status, container_id
+                SELECT
+                    id,
+                    unit_number,
+                    area_m2,
+                    status,
+                    container_id,
+                    monthly_price
                 FROM public.units
                 ORDER BY unit_number
                 """
@@ -37,6 +44,7 @@ def list_units():
                 "area_m2": row[2],
                 "status": row[3],
                 "container_id": row[4],
+                "monthly_price": row[5],
             }
             for row in rows
         ]
@@ -54,7 +62,13 @@ def get_unit(unit_id: int):
         with get_db_connection() as connection:
             row = connection.execute(
                 """
-                SELECT id, unit_number, area_m2, status, container_id
+                SELECT
+                    id,
+                    unit_number,
+                    area_m2,
+                    status,
+                    container_id,
+                    monthly_price
                 FROM public.units
                 WHERE id = %s
                 """,
@@ -73,6 +87,7 @@ def get_unit(unit_id: int):
             "area_m2": row[2],
             "status": row[3],
             "container_id": row[4],
+            "monthly_price": row[5],
         }
 
     except Error:
