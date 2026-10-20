@@ -27,5 +27,5 @@ def validate_database_url() -> str:
 def get_db_connection():
     database_url = validate_database_url()
 
-    with psycopg.connect(database_url) as connection:
+    with psycopg.connect(database_url, connect_timeout=5) as connection:
         yield connection
